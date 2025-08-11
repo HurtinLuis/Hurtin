@@ -1,0 +1,37 @@
+<snippet>
+  <content><![CDATA[
+vector<P> getHull(vector<P> &a) {
+    sort(all(a), [&](const P u, const P v) {
+        return u.x < v.x || (u.x == v.x && u.y < v.y);
+    });
+    
+    a.erase(unique(all(a)), a.end());
+    if (siz(a) <= 1) {
+        return a;
+    }
+    
+    vector<P> lo, hi;
+    for (auto p : a) {
+        while (siz(lo) > 1 && cross(lo.back() - lo[siz(lo) - 2], p - lo[siz(lo) - 2]) <= 0) {
+            lo.pop_back();
+        }
+        while (siz(hi) > 1 && cross(hi.back() - hi[siz(hi) - 2], p - hi[siz(hi) - 2]) >= 0) {
+            hi.pop_back();
+        }
+        lo.push_back(p);
+        hi.push_back(p);
+    }
+    
+    lo.pop_back();
+    reverse(all(hi));
+    hi.pop_back();
+    lo.insert(lo.end(), all(hi));
+    return lo;
+}
+
+]]></content>
+  <tabTrigger>getHull</tabTrigger>
+  <description>getHull</description>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope >source.python</scope > -->
+</snippet>

@@ -1,0 +1,35 @@
+<snippet>
+  <content><![CDATA[
+auto lca = [&](int u, int v) -> int {
+    if (dep[u] < dep[v]) {
+        swap(u, v);
+    }
+    int d = dep[u] - dep[v];
+    for (int i = h - 1; i >= 0; i--) {
+        if (d >> i & 1) {
+            u = pv[u][i];
+        }
+    }
+    if (u == v) {
+        return v;
+    }
+    
+    for (int i = h - 1; i >= 0; i--) {
+        if (pv[u][i] != -1 && pv[u][i] != pv[v][i]) {
+            u = pv[u][i];
+            v = pv[v][i];
+        }
+    }
+    return pv[u][0];
+};
+
+auto dist = [&](int u, int v) -> int {
+    return dep[u] + dep[v] - 2 * dep[lca(u, v)];
+};
+
+]]></content>
+  <tabTrigger>lca</tabTrigger>
+  <description>lca</description>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope >source.python</scope > -->
+</snippet>

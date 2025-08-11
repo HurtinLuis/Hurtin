@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[
+if (ifstream("data.in")) freopen("data.in", "r", stdin);
+]]></content>
+  <tabTrigger>FILE_IN</tabTrigger>
+  <description>FILE_IN</description>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope >source.python</scope > -->
+</snippet>
