@@ -7,7 +7,7 @@ void sieve(int n) {
     primes.clear();
     phi[1] = 1;
     mu[1] = 1;
-    
+
     for (int i = 2; i <= n; i++) {
         if (minp[i] == 0) {
             minp[i] = i;
@@ -15,7 +15,7 @@ void sieve(int n) {
             mu[i] = -1;
             primes.push_back(i);
         }
-        
+
         for (auto p : primes) {
             if (i * p > n) {
                 break;

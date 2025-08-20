@@ -2,17 +2,17 @@ template <typename T>
 struct Fenwick {
     int n;
     std::vector<T> a;
-    
+
     Fenwick(int n_ = 0) : n(n_) {
         a.assign(n, T{});
     }
-    
+
     void add(int x, const T &v) {
         for (int i = x + 1; i <= n; i += i & -i) {
             a[i - 1] = a[i - 1] + v;
         }
     }
-    
+
     T sum(int x) {
         T ans{};
         for (int i = x; i > 0; i -= i & -i) {
@@ -20,7 +20,7 @@ struct Fenwick {
         }
         return ans;
     }
-    
+
     T rangeSum(int l, int r) {
         return sum(r) - sum(l);
     }

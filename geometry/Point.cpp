@@ -4,9 +4,9 @@ struct Point {
     T x;
     T y;
     Point(T x = 0, T y = 0) : x(x), y(y) {}
-    
+
     template<class U> operator Point<U>() { return Point<U> (U(x), U(y)); }
-    
+
     Point &operator+=(const Point &p) & {
         x += p.x;
         y += p.y;

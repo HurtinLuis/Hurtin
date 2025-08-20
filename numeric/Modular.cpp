@@ -27,10 +27,10 @@ template <typename T>
 class Modular {
 public:
     using Type = typename std::decay<decltype(T::value)>::type;
-    
+
     constexpr Modular() : x() {}
     template <typename U> Modular(const U& v) { x = normalize(v); }
-    
+
     template <typename U>
     static Type normalize(const U& y) {
         Type v;
@@ -41,13 +41,13 @@ public:
         }
         return (v < 0 ? v + mod() : v);
     }
-    
+
     Type val() const { return x; }
     template <typename U> explicit operator U() const { return static_cast<U>(x); }
-    
+
     constexpr static Type mod() { return T::value; }
     Modular inv() const { return Modular(inverse(x, mod())); }
-    
+
     Modular& operator+=(const Modular& rhs) {
         x += rhs.x;
         if (x >= mod()) x -= mod();
@@ -66,7 +66,7 @@ public:
         return *this *= rhs.inv();
     }
     Modular operator-() const { return Modular(x == 0 ? 0 : mod() - x); }
-    
+
     friend Modular operator+(Modular lhs, const Modular& rhs) { return lhs += rhs; }
     friend Modular operator-(Modular lhs, const Modular& rhs) { return lhs -= rhs; }
     friend Modular operator*(Modular lhs, const Modular& rhs) { return lhs *= rhs; }
@@ -76,7 +76,7 @@ public:
     friend bool operator!=(const Modular& lhs, const Modular& rhs) { return lhs.x != rhs.x; }
     // ↓ Not a true numeric cmp, cause val(pre-mod) is unknown
     friend bool operator<(const Modular& lhs, const Modular& rhs) { return lhs.x < rhs.x; }
-    
+
     friend std::ostream& operator<<(std::ostream& os, const Modular& num) {
         return os << num.x;
     }
@@ -86,7 +86,7 @@ public:
         num = Modular(v);
         return is;
     }
-    
+
 private:
     Type x;
 };

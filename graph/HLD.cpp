@@ -4,11 +4,11 @@ struct HLD {
     std::vector<int> siz, top, dep, parent, in, out, ord;
     std::vector<std::vector<int>> g;
     int cur;
-    
+
     HLD(int n_ = 0) {
         init(n_);
     }
-    
+
     void init(int n_) {
         n = n_;
         siz.assign(n, 1);
@@ -21,12 +21,12 @@ struct HLD {
         g.assign(n, {});
         cur = 0;
     }
-    
+
     void addEdge(int u, int v) {
         g[u].push_back(v);
         g[v].push_back(u);
     }
-    
+
     void work(int root = 0) {
         top[root] = root;
         dep[root] = 0;
@@ -34,7 +34,7 @@ struct HLD {
         dfs1(root);
         dfs2(root);
     }
-    
+
     void dfs1(int u) {
         if (parent[u] != -1) {
             g[u].erase(std::find(g[u].begin(), g[u].end(), parent[u]));
@@ -49,7 +49,7 @@ struct HLD {
             }
         }
     }
-    
+
     void dfs2(int u) {
         in[u] = cur++;
         ord[in[u]] = u;
@@ -59,7 +59,7 @@ struct HLD {
         }
         out[u] = cur;
     }
-    
+
     int lca(int u, int v) {
         while (top[u] != top[v]) {
             if (dep[top[u]] > dep[top[v]]) {
@@ -70,11 +70,11 @@ struct HLD {
         }
         return (dep[u] < dep[v] ? u : v);
     }
-    
+
     int dist(int u, int v) {
         return dep[u] + dep[v] - 2 * dep[lca(u, v)];
     }
-    
+
     int jump(int u, int k) {
         if (dep[u] < k) {
             return -1;
@@ -85,11 +85,11 @@ struct HLD {
         }
         return ord[in[u] - dep[u] + d];
     }
-    
+
     bool isAncester(int u, int v) {
         return in[u] <= in[v] && in[v] < out[u];
     }
-    
+
     int rootedParent(int u, int v) {
         std::swap(u, v);
         if (u == v) {
@@ -103,7 +103,7 @@ struct HLD {
         }) - 1;
         return *it;
     }
-    
+
     int rootedSize(int u, int v) {
         if (u == v) {
             return n;
@@ -113,7 +113,7 @@ struct HLD {
         }
         return n - siz[rootedParent(u, v)];
     }
-    
+
     int rootedLca(int a, int b, int c) {
         return lca(a, b) ^ lca(b, c) ^ lca(c, a);
     }

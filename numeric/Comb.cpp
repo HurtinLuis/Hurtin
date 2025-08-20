@@ -9,7 +9,7 @@ void init_fact(int m) {
     }
     F.resize(m + 1);
     iF.resize(m + 1);
-    
+
     for (int i = n + 1; i <= m; i++) {
         F[i] = F[i - 1] * i;
     }

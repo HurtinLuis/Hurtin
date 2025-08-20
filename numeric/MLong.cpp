@@ -28,16 +28,16 @@ struct MLong {
     i64 x;
     constexpr MLong() : x() {}
     template <typename U> MLong(const U &v) { x = normalize(i64(v)); }
-    
+
     i64 normalize(i64 y) {
         y %= M;
         return (y < 0 ? y + M : y);
     }
-    
+
     explicit operator i64() const {
         return x;
     }
-    
+
     MLong inv() const {
         return MLong(inverse(x, M));
     }
@@ -68,7 +68,7 @@ struct MLong {
 
     friend bool operator==(const MLong& lhs, const MLong& rhs) { return lhs.x == rhs.x; }
     friend bool operator!=(const MLong& lhs, const MLong& rhs) { return lhs.x != rhs.x; }
-    
+
     friend std::istream& operator>>(std::istream& is, MLong& a) {
         i64 v;
         is >> v;
