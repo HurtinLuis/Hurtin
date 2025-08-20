@@ -47,6 +47,6 @@ signed main() {
  *  ⑧ Do not delete, use "//" instead
  *  ⑨ Special cases(n = 1, 2), corner cases
  *  ⑩ Output format
- *  ? Is there anything eatra to check
+ *  ? Is there anything extra to check
 **/
 

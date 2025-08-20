@@ -11,17 +11,15 @@ Z det(std::vector<std::vector<Z>> a) {
             std::swap(a[i], a[j]);
             ans *= -1;
         }
-        ans *= a[i][i];
-        auto v = Z(a[i][i]).inv();
-        for (int j = i; j < n; j++) {
-            a[i][j] *= v;
-        }
+
+        Z inv = a[i][i].inv();
         for (int j = i + 1; j < n; j++) {
-            Z v = a[j][i];
+            Z v = a[j][i] * inv;
             for (int k = i; k < n; k++) {
                 a[j][k] -= a[i][k] * v;
             }
         }
+        ans *= a[i][i];
     }
     return ans;
 }

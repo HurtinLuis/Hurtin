@@ -22,9 +22,9 @@ struct Fenwick {
     }
     
     T rangeSum(int l, int r) {
-        return sum(r) - sum(l - 1);
+        return sum(r) - sum(l);
     }
-    
+
     int select(const T &k) {
         int x = 0;
         T cur{};
@@ -37,4 +37,3 @@ struct Fenwick {
         return x;
     }
 };
-

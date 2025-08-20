@@ -12,10 +12,10 @@ T inverse(T a, T m) {
 }
 
 template<typename T, typename U>
-constexpr T power(T a, U b) {
+T power(T a, U b) {
     assert(b >= 0);
     T res = 1;
-    while (b > 0) {
+    while (b) {
         if (b & 1) res *= a;
         a *= a;
         b >>= 1;
@@ -27,7 +27,7 @@ template<i64 M>
 struct MLong {
     i64 x;
     constexpr MLong() : x() {}
-    template <typename U> MLong(const U& v) { x = normalize(i64(v)); }
+    template <typename U> MLong(const U &v) { x = normalize(i64(v)); }
     
     i64 normalize(i64 y) {
         y %= M;
@@ -80,5 +80,6 @@ struct MLong {
     }
 };
 
+// constexpr i64 mod = i64(1E18) + 9;
 constexpr i64 mod = 998244353;
 using Z = MLong<mod>;
