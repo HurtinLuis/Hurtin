@@ -21,7 +21,7 @@ template<typename T> void chmax(T& a, const T b) { if (a < b) a = b; }
 using namespace std;
 
 void solve() {
-	$1
+
 }
 
 signed main() {
@@ -30,13 +30,12 @@ signed main() {
 
     int t;
     cin >> t;
-
     while (t--) solve();
-    
+
     return 0;
 }
 
-/** ---------- ✨ THINGS TO CHECK ✨ ---------- 
+/** ---------- ✨ THINGS TO CHECK ✨ ----------
  *  ① int overflow or i64 memory need
  *  ② 1-idx or 0-idx, [l, r] or [l, r)
  *  ③ = or ==, > or >=, < or <=, n or m, i or j, p1 or p2...
@@ -49,4 +48,3 @@ signed main() {
  *  ⑩ Output format
  *  ? Is there anything extra to check
 **/
-

@@ -15,10 +15,10 @@ template<typename T, typename U>
 T power(T a, U b) {
     assert(b >= 0);
     T res = 1;
-    while (b) {
-        if (b & 1) res *= a;
-        a *= a;
-        b >>= 1;
+    for (; b != 0; b /= 2, a *= a) {
+        if (b & 1) {
+            res *= a;
+        }
     }
     return res;
 }
@@ -99,7 +99,4 @@ private:
 // using Z = Modular<VarMod>;
 
 constexpr int mod = 998244353;
-// decltype(mod) 是 mod 的类型，比方说 const int&。
-// decay<decltype(mod)>::type 会把 const 和 & 去掉，变成 int 类型。
-// std::integral_constant<int> 会创建一个 int 类型的常量。
 using Z = Modular<std::integral_constant<std::decay<decltype(mod)>::type, mod>>;
