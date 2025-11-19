@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // author: Hurtin
 // last modified in: 2025/11/19
 // #include <bits/stdc++.h>
@@ -112,4 +111,3 @@ void debug_out(const std::string &s, T&&... args) {
 }
 
 #define debug(...) debug_out(#__VA_ARGS__, __VA_ARGS__)
->>>>>>> c576f1a39e510cfec4edb7fb908796568ade864f
