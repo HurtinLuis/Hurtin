@@ -5,9 +5,6 @@
 using i64 = long long;
 using u64 = unsigned long long;
 
-#define siz(p) int(p.size())
-#define all(p) p.begin(), p.end()
-
 template<typename T> void chmin(T& a, const T b) { if (a > b) a = b; }
 template<typename T> void chmax(T& a, const T b) { if (a < b) a = b; }
 

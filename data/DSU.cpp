@@ -1,10 +1,7 @@
 struct DSU {
     std::vector<int> f, siz;
 
-    DSU() {}
-    DSU(int n) { init(n); }
-
-    void init(int n) {
+    DSU(int n = 0) {
         f.resize(n);
         std::iota(f.begin(), f.end(), 0);
         siz.assign(n, 1);
